@@ -114,7 +114,7 @@
                             </div>
                             <button type="submit" class="site-btn" id="signupbtn">Sign Up Now</button>
                         </form>
-                        <h5>Already have an account? <a href="/cm4Fe/login.html">Log In!</a></h5>
+                        <h5>Already have an account? <a href="./login.html">Log In!</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -191,6 +191,9 @@
 
 </html>
 <script>
+    $(window).on('load', function (){
+        if (localStorage.getItem('name')) window.location="./index.html";
+    })
 $("#signupbtn").click(function (){
     let account = {username : $("#unameReg").val(), password : $("#passReg").val(), name : $("#nameReg").val()};
     $.ajax({
@@ -203,7 +206,7 @@ $("#signupbtn").click(function (){
         data: JSON.stringify(account),
         success: function (data) {
             alert("Register succeed!");
-            window.location="/cm4Fe/login.html";
+            window.location="./login.html";
         },
         error: function (err) {
             console.log(err)
