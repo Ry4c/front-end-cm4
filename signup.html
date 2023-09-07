@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+<!--    jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -82,7 +84,7 @@
                 <div class="col-lg-12 text-center">
                     <div class="normal__breadcrumb__text">
                         <h2>Sign Up</h2>
-                        <p>Welcome to the official Anime blog.</p>
+                        <p>Welcome to the official Manga Website.</p>
                     </div>
                 </div>
             </div>
@@ -99,20 +101,20 @@
                         <h3>Sign Up</h3>
                         <form action="#">
                             <div class="input__item">
-                                <input type="text" placeholder="Email address">
-                                <span class="icon_mail"></span>
-                            </div>
-                            <div class="input__item">
-                                <input type="text" placeholder="Your Name">
+                                <input type="text" placeholder="Your Name" id="nameReg">
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password">
+                                <input type="text" placeholder="Your Username" id="unameReg">
+                                <span class="icon_profile"></span>
+                            </div>
+                            <div class="input__item">
+                                <input type="text" placeholder="Password" id="passReg">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Login Now</button>
+                            <button type="submit" class="site-btn" id="signupbtn">Sign Up Now</button>
                         </form>
-                        <h5>Already have an account? <a href="#">Log In!</a></h5>
+                        <h5>Already have an account? <a href="/cm4Fe/login.html">Log In!</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -188,3 +190,26 @@
 </body>
 
 </html>
+<script>
+$("#signupbtn").click(function (){
+    let account = {username : $("#unameReg").val(), password : $("#passReg").val(), name : $("#nameReg").val()};
+    $.ajax({
+        type: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+        },
+        url: "http://localhost:8080/students",
+        data: JSON.stringify(account),
+        success: function (data) {
+            alert("Register succeed!");
+            window.location="/cm4Fe/login.html";
+        },
+        error: function (err) {
+            console.log(err)
+            // lỗi
+        }
+    });
+
+})
+</script>

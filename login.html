@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!--    jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 
 <body>
@@ -38,6 +41,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="./index.html">
+<!--                            change logo needed-->
                             <img src="img/logo.png" alt="">
                         </a>
                     </div>
@@ -99,22 +103,22 @@
                         <h3>Login</h3>
                         <form action="#">
                             <div class="input__item">
-                                <input type="text" placeholder="Email address">
+                                <input type="text" placeholder="Username" id="username">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password">
+                                <input type="text" placeholder="Password" id="pass">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Login Now</button>
                         </form>
+                        <button type="submit" class="site-btn" id="signin-btn">Login Now</button>
                         <a href="#" class="forget_pass">Forgot Your Password?</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="login__register">
                         <h3>Dont’t Have An Account?</h3>
-                        <a href="#" class="primary-btn">Register Now</a>
+                        <a href="/cm4Fe/signup.html" class="primary-btn">Register Now</a>
                     </div>
                 </div>
             </div>
@@ -150,7 +154,7 @@
                         <a href="./index.html"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <div class="footer__nav">
                         <ul>
                             <li class="active"><a href="./index.html">Homepage</a></li>
@@ -160,12 +164,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 
-                  </div>
               </div>
           </div>
       </footer>
@@ -196,3 +195,27 @@
 </body>
 
 </html>
+<script>
+    $("#signupbtn").click(function (){
+        let account = {username: $("#username").val(), password: $("#pass").val()}
+        $.ajax({
+            type: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type':'application/json'
+            },
+            url: "http://localhost:8080/students",
+            data: JSON.stringify(account),
+            success: function (data) {
+                localStorage.setItem('token',JSON.stringify(data.token));
+                localStorage.setItem('name',JSON.stringify(data.name));
+                localStorage.setItem('favorite',JSON.stringify(data.favorite));
+                window.location="/cm4Fe/index.html";
+            },
+            error: function (err) {
+                console.log(err)
+                // lỗi
+            }
+        });
+    });
+</script>
