@@ -88,7 +88,7 @@
             <div class="col-lg-12 text-center">
                 <div class="normal__breadcrumb__text">
                     <h2>Login</h2>
-                    <p>Welcome to the official Anime blog.</p>
+                    <p>Welcome to the official Manga Website</p>
                 </div>
             </div>
         </div>
@@ -198,7 +198,7 @@
 </html>
 <script>
     $(window).on('load', function () {
-        if (localStorage.getItem('name')) window.location = "./index.html";
+        if (localStorage.getItem('accData')) window.location = "./index.html";
     })
     $("#signupbtn").click(function () {
         let account = {username: $("#username").val(), password: $("#pass").val()}
@@ -211,14 +211,11 @@
             url: "http://localhost:8080/students",
             data: JSON.stringify(account),
             success: function (data) {
-                localStorage.setItem('token', JSON.stringify(data.token));
-                localStorage.setItem('name', JSON.stringify(data.name));
-                localStorage.setItem('favorite', JSON.stringify(data.favorite));
+                localStorage.setItem('accData', JSON.stringify(data));
                 window.location = "./index.html";
             },
             error: function (err) {
                 console.log(err)
-                // lỗi
             }
         });
     });

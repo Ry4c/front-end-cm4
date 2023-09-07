@@ -55,7 +55,7 @@
                                     <li><a href="./#">Favorite</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Our Blog</a></li>
+                            <li><a href="#">Favorite</a></li>
                             <li><a href="#">Contacts</a></li>
                         </ul>
                     </nav>
@@ -64,7 +64,7 @@
             <div class="col-lg-2">
                 <div class="header__right">
                     <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                    <a href="./login.html"><span class="icon_profile" id="user-name"></span></a>
+                    <a href="#"><i class="icon_profile"></i><span id="userName"></span></a>
                 </div>
             </div>
         </div>
@@ -91,6 +91,19 @@
             </div>
             <div class="hero__items set-bg"
                  data-setbg="https://xuanthulab.net/images/post/the-img-chen-anh-vao-html-1143.jpg">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="hero__text">
+                            <div class="label">Adventure</div>
+                            <h2>Fate / Stay Night: Unlimited Blade Works</h2>
+                            <p>After 30 days of travel across the world...</p>
+                            <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__items set-bg"
+                 data-setbg="https://images.fpt.shop/unsafe/filters:quality(5)/fptshop.com.vn/uploads/images/tin-tuc/152663/Originals/doi-duoi-anh-01.jpg">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="hero__text">
@@ -735,3 +748,37 @@
 </body>
 
 </html>
+<script>
+    let accData = {username: 'userN', name: 'name1', token:'chuoi Token',fav:[{ten:'ten1',giatri:'gia tri 1'}]}
+    localStorage.setItem('accData',JSON.stringify(accData));
+    $(window).on('load', function checkUser (){
+        if(localStorage.getItem('accData')) $('#userName').html(JSON.parse(localStorage.getItem('accData')).name)
+    });
+    $('#acc-btn').click(function (){
+        if(localStorage.getItem('accData')){
+            localStorage.removeItem('accData');
+            window.location ='./anime-details.html';
+        }else {
+            window.location ='./login.html';
+            $('#acc-btn').attr('title','Login')
+        }
+    })
+    $('#search-input').on('keypress',function(e) {
+        if(e.which == 13) {
+            $.ajax({
+                type: "GET",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type':'application/json'
+                },
+                url: "http://localhost:8080/students"+$('#search-input').val(),
+                success: function (data) {
+                //     show search result
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            });
+        }
+        })
+</script>

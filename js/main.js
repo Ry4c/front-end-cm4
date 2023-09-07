@@ -99,7 +99,3 @@
      });
 
 })(jQuery);
-
-$(window).on('load', function (){
-    if(localStorage.getItem('name')) $('#user-name').val(localStorage.getItem('name'))
-})
