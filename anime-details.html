@@ -308,17 +308,4 @@
 </body>
 
 </html>
-<script>
-    $(window).on('load', function checkUser (){
-        if(localStorage.getItem('accData')) $('#userName').html(JSON.parse(localStorage.getItem('accData')).name)
-    });
-    $('#acc-btn').click(function (){
-        if(localStorage.getItem('accData')){
-            localStorage.removeItem('accData');
-            window.location ='./anime-details.html';
-        }else {
-            window.location ='./login.html';
-            $('#acc-btn').attr('title','Login')
-        }
-    })
-</script>
+<script src="js/account-search.js"></script>
