@@ -43,7 +43,6 @@
             <div class="col-lg-2">
                 <div class="header__logo">
                     <a href="./index.html">
-                        <!--                            change logo needed-->
                         <img src="img/logo.png" alt="">
                     </a>
                 </div>
@@ -52,18 +51,12 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="./index.html">Homepage</a></li>
-                            <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
-                                <ul class="dropdown">
-                                    <li><a href="./categories.html">Categories</a></li>
-                                    <li><a href="./anime-details.html">Anime Details</a></li>
-                                    <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                    <li><a href="./signup.html">Sign Up</a></li>
-                                    <li><a href="./login.html">Login</a></li>
+                            <li class="active"><a href="./index.html">Homepage</a></li>
+                            <li><a href="./categories.html">Genres <span class="arrow_carrot-down"></span></a>
+                                <ul class="dropdown" id="genresList">
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Our Blog</a></li>
+                            <li><a href="#">Favorite</a></li>
                             <li><a href="#">Contacts</a></li>
                         </ul>
                     </nav>
@@ -72,14 +65,13 @@
             <div class="col-lg-2">
                 <div class="header__right">
                     <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                    <a href="./login.html"><span class="icon_profile"></span></a>
+                    <a href="#" id="acc-btn"><i class="icon_profile"></i><span id="userName"></span></a>
                 </div>
             </div>
         </div>
         <div id="mobile-menu-wrap"></div>
     </div>
-</header>
-<!-- Header End -->
+</header><!-- Header End -->
 
 <!-- Normal Breadcrumb Begin -->
 <section class="normal-breadcrumb set-bg" data-setbg="img/normal-breadcrumb.jpg">
@@ -105,15 +97,15 @@
                     <h3>Login</h3>
                     <form action="#">
                         <div class="input__item">
-                            <input type="text" placeholder="Username" id="username" required>
+                            <input type="text" placeholder="Username" id="usernameIn" required>
                             <span class="icon_mail"></span>
                         </div>
                         <div class="input__item">
-                            <input type="text" placeholder="Password" id="pass" required>
+                            <input type="text" placeholder="Password" id="passIn" required>
                             <span class="icon_lock"></span>
                         </div>
+                        <button type="submit" class="site-btn" id="signin-btn">Login Now</button>
                     </form>
-                    <button type="submit" class="site-btn" id="signin-btn">Login Now</button>
                     <a href="#" class="forget_pass">Forgot Your Password?</a>
                 </div>
             </div>
@@ -161,7 +153,7 @@
                     <ul>
                         <li class="active"><a href="./index.html">Homepage</a></li>
                         <li><a href="./categories.html">Categories</a></li>
-                        <li><a href="./blog.html">Our Blog</a></li>
+                        <li><a href="#">Favorite</a></li>
                         <li><a href="#">Contacts</a></li>
                     </ul>
                 </div>
@@ -201,7 +193,7 @@
         if (localStorage.getItem('accData')) window.location = "./index.html";
     })
     $("#signupbtn").click(function () {
-        let account = {username: $("#username").val(), password: $("#pass").val()}
+        let account = {username: $("#usernameIn").val(), password: $("#passIn").val()}
         $.ajax({
             type: "POST",
             headers: {
@@ -220,3 +212,4 @@
         });
     });
 </script>
+<script src="js/account-nav.js"></script>
