@@ -4,6 +4,7 @@ $(window).on('load', function (){
             $('#userName').html(JSON.parse(localStorage.getItem('accData')).name);
             $('#acc-btn').attr("title",'Logout').click(function (){
                 localStorage.removeItem('accData');
+                window.location="./index.html"
             })
         } else {
             $('#userName').html("Login");
@@ -38,7 +39,8 @@ $('#search-input').on('keypress',function(e) {
             type: "GET",
             headers: {
                 'Accept': 'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                "Authorization":"Bearer " + JSON.parse(localStorage.getItem('accData')).token
             },
             url: "http://localhost:8080/students"+$('#search-input').val(),
             success: function (data) {
