@@ -1,5 +1,6 @@
 $(window).on('load', function (){
     if(localStorage.getItem('accData')) $('#userName').html(JSON.parse(localStorage.getItem('accData')).name)
+    else $('#userName').html(Login);
 });
 $('#acc-btn').click(function (){
     if(localStorage.getItem('accData')){
