@@ -23,10 +23,6 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <!--    jquery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 
@@ -95,7 +91,7 @@
             <div class="col-lg-6">
                 <div class="login__form">
                     <h3>Login</h3>
-                    <form action="#">
+                    <form>
                         <div class="input__item">
                             <input type="text" placeholder="Username" id="usernameIn" required>
                             <span class="icon_mail"></span>
@@ -192,18 +188,22 @@
     $(window).on('load', function () {
         if (localStorage.getItem('accData')) window.location = "./index.html";
     })
-    $("#signupbtn").click(function () {
-        let account = {username: $("#usernameIn").val(), password: $("#passIn").val()}
+    $("#signin-btn").click(function () {
+        let username = $("#usernameIn").val();
+        let password = $("#passIn").val();
+        let account = {username, password}
+        alert(account);
         $.ajax({
             type: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            url: "http://localhost:8080/students",
+            url: "http://localhost:8080/login",
             data: JSON.stringify(account),
             success: function (data) {
                 localStorage.setItem('accData', JSON.stringify(data));
+                console.log( JSON.stringify(data))
                 window.location = "./index.html";
             },
             error: function (err) {

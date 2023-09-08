@@ -1,4 +1,5 @@
 $(window).on('load', function (){
+    console.log(JSON.parse(localStorage.getItem('accData')));
         if(localStorage.getItem('accData')){
             $('#userName').html(JSON.parse(localStorage.getItem('accData')).name);
             $('#acc-btn').attr("title",'Logout').click(function (){
@@ -20,7 +21,7 @@ $(window).on('load',function (){
         str += `<li><a href="./categories/${genres}">${genres}</a></li>`
     }
     $('#genresList').html(str)
-})
+});
 
 $('#acc-btn').click(function (){
     if(localStorage.getItem('accData')){
