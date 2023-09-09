@@ -261,6 +261,11 @@
 </script>
 <script src="js/account-search.js"></script>
 <script>
+    $(window).on('load',function (){
+        if ($(location).attr('href').contains('http://localhost:63342/front-end-cm4/index.html/stories?s=')){
+        // ajax
+        }
+    })
     function showList(arr){
     let str= "";
         for (const e of arr) {
