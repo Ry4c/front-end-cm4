@@ -1,5 +1,4 @@
 $(window).on('load', function (){
-    console.log(JSON.parse(localStorage.getItem('accData')));
         if(localStorage.getItem('accData')){
             $('#userName').html(JSON.parse(localStorage.getItem('accData')).name);
             $('#acc-btn').attr("title",'Logout').click(function (){
@@ -13,17 +12,8 @@ $(window).on('load', function (){
             });
 
         }
-    },
-);
-$(window).on('load',function (){
-    let genresList = JSON.parse(localStorage.getItem("genres"));
-    let str='';
-    for (const genres of genresList) {
-        str += `<li><a href="./categories/${genres}">${genres}</a></li>`
     }
-    $('#genresList').html(str)
-});
-
+);
 $('#acc-btn').click(function (){
     if(localStorage.getItem('accData')){
         localStorage.removeItem('accData');
@@ -33,6 +23,33 @@ $('#acc-btn').click(function (){
         $('#acc-btn').attr('title','Login')
     }
 })
+
+$(window).on('load',function (){
+    $.ajax({
+        type: "GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+        },
+        url: "http://localhost:8080/genres",
+        success: function (data) {
+            localStorage.setItem("genres",JSON.stringify(data));
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    });
+});
+
+$(window).on('load',function (){
+    let genresList = JSON.parse(localStorage.getItem("genres"));
+    let str='';
+    for (const genres of genresList) {
+        str += `<li><a href="./categories/${genres}">${genres}</a></li>`
+    }
+    $('#genresList').html(str)
+});
+
 $('#search-input').on('keypress',function(e) {
     if(e.which === 13) {
         $.ajax({
