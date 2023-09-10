@@ -55,6 +55,7 @@
                             </li>
                             <li class="active"><a href="./favourites.html">Favorites</a></li>
                             <li><a href="#">Contacts</a></li>
+                            <li><a href="#addStoryModal" id="add-str" style="display: none" data-toggle="modal" data-target="#addStoryModal">Add Story</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -88,7 +89,7 @@
 
 <!-- Product Section Begin -->
 <section class="product spad">
-    <div class="container">
+    <div class="container"  id="main">
         <div class="row">
             <div class="col-lg-8">
                 <div class="trending__product">
@@ -293,6 +294,40 @@
     </div>
 </div>
 <!-- Search model end -->
+
+
+<!--Add story Modal begin-->
+<div class="modal fade" id="addStoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog rounded" role="document">
+        <div class="modal-content" style="background-color: #0b0c2a">
+            <div class="modal-header" style="background-color: #0b0c2a">
+                <h5 class="modal-title" id="addStoryModalLabel" style="color: #ffffff">Add story</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body bg-secondary" style="background-color: #0b0c2a">
+                <label for="title-add" style="color: #ffffff">Input title:</label><br>
+                <input id="title-add" style="width: 35vw" class="bg-secondary border-dark"><br>
+                <label for="img-add" style="color: #ffffff">Input image link:</label><br>
+                <input id="img-add" style="width: 35vw" class="bg-secondary border-dark"><br>
+                <label for="status-add" style="color: #ffffff">Input starus:</label><br>
+                <input id="status-add" style="width: 35vw" class="bg-secondary border-dark"><br>
+                <label for="description-add" style="color: #ffffff">Input description:</label><br>
+                <input id="description-add" style="width: 35vw" class="bg-secondary border-dark"><br>
+                <label for="votes-add" style="color: #ffffff">Input votes:</label><br>
+                <input type="number" id="votes-add" style="width: 35vw" class="bg-secondary border-dark"><br>
+                <label for="rating-add" style="color: #ffffff">Input rating:</label><br>
+                <input type="number" id="rating-add" style="width: 35vw" class="bg-secondary border-dark" min="0" max="5"><br>
+            </div>
+            <div class="modal-body bg-secondary" style="background-color: #0b0c2a">
+                <button type="reset" class="btn" style="background-color: #0b0c2a; color: #ffffff" data-dismiss="modal">Close</button>
+                <button type="button" id="addStory" class="btn" style="background-color: #0b0c2a; color: #ffffff" data-dismiss="modal">Add story</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Add story Modal end-->
 
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
