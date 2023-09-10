@@ -52,7 +52,7 @@ function showGenres(){
     let genresList = JSON.parse(localStorage.getItem("genres"));
     let str='';
     for (const genres of genresList) {
-        str += `<li><a href="./categories.html/?genre=${genres.name}">${genres.name}</a></li>`
+        str += `<li><a href="categories.html/?genre=${genres.name}">${genres.name}</a></li>`
     }
     $('#genresList').html(str)
 }
