@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
 </head>
 
 <body>
@@ -87,7 +88,7 @@
                 </div>
             </div>
             <div class="hero__items set-bg"
-                 data-setbg="https://xuanthulab.net/images/post/the-img-chen-anh-vao-html-1143.jpg">
+                 data-setbg="https://static.wikia.nocookie.net/highschooldxd/images/1/13/Rias_gremory.jpg/revision/latest?cb=20121202064330">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="hero__text">
@@ -139,7 +140,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             <div class="section-title">
-                                <h4>Trending Now</h4>
+                                <h4>All Stories</h4>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
@@ -347,48 +348,7 @@
 </body>
 
 </html>
-<script>
 
-    function getListStory() {
-        $.ajax({
-            type  : "GET",
-            "headers": {
-                "Accept" : "application/Json"
-            },
-            "url": "http://localhost:8080/stories",
-            success  : function (response) {
-                console.log(response);
-                showList(response);
-            },
-            error : function (err) {
-                console.log(err);
-            }
-        })
-    }
-
-    getListStory();
-    function showList(arr){
-    let str= "";
-        for (const e of arr) {
-            str += `   <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg=${e.img}>
-                                    <div class="ep">${e.chapters}</div>
-                                    <div class="comment"><i class="fa fa-comments"></i></div>
-                                </div>
-                                <div class="product__item__text">
-                                    <ul>`
-                                    for (const g of e.genres) {
-                                        str +=`<li>g.name</li>`
-                                    }
-                                    str += `</ul>
-                                    <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                </div>
-                            </div>
-                        </div>`
-
-        }
-        $('#trending').html(str);
-    }
-</script>
 <script src="./js/account-nav.js"></script>
+
+<script src="js/index.js"></script>
