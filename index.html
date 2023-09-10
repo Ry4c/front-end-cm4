@@ -314,11 +314,25 @@
 
 </html>
 <script>
-    $(window).on('load',function (){
-        if ($(location).attr('href').contains('http://localhost:63342/front-end-cm4/index.html/stories?s=')){
-        // ajax
-        }
-    })
+
+    function getListStory() {
+        $.ajax({
+            type  : "GET",
+            "headers": {
+                "Accept" : "application/Json"
+            },
+            "url": "http://localhost:8080/stories",
+            success  : function (response) {
+                console.log(response);
+                showList(response);
+            },
+            error : function (err) {
+                console.log(err);
+            }
+        })
+    }
+
+    getListStory();
     function showList(arr){
     let str= "";
         for (const e of arr) {
@@ -326,7 +340,7 @@
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg=${e.img}>
                                     <div class="ep">${e.chapters}</div>
-                                    <div class="comment"><i class="fa fa-comments"></i> ${e.comments.length}</div>
+                                    <div class="comment"><i class="fa fa-comments"></i></div>
                                 </div>
                                 <div class="product__item__text">
                                     <ul>`
