@@ -47,16 +47,13 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="./index.html">Homepage</a></li>
-                            <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
-                                <ul class="dropdown">
-                                    <li><a href="./categories.html">Categories</a></li>
-                                    <li><a href="./anime-details.html">Manga Details</a></li>
-                                    <li><a href="./anime-watching.html">Manga Reading</a></li>
-                                    <li><a href="./#">Favorite</a></li>
+                            <li><a href="./categories.html">Genres <span class="arrow_carrot-down"></span></a>
+                                <ul class="dropdown" id="genresList">
                                 </ul>
                             </li>
-                            <li><a href="#">Favorite</a></li>
+                            <li><a href="./favourites.html">Favorite</a></li>
                             <li><a href="#">Contacts</a></li>
+                            <li><a href="#addStoryModal" id="add-str" data-toggle="modal" style="display: none" data-target="#addStoryModal">Add Story</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -64,7 +61,7 @@
             <div class="col-lg-2">
                 <div class="header__right">
                     <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                    <a href="#" title="Logout" id="acc-btn"><i class="icon_profile"></i><span id="userName"></span></a>
+                    <a href="#" id="acc-btn"><i class="icon_profile"></i><span id="userName"></span></a>
                 </div>
             </div>
         </div>
@@ -95,57 +92,51 @@
         <div class="anime__details__content">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="anime__details__pic set-bg" data-setbg="img/anime/details-pic.jpg">
-                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                    <div id="img" class="anime__details__pic set-bg" data-setbg="img/anime/details-pic.jpg">
+                        <div class="comment"><i class="fa fa-comments"></i> <span  class="comments"></span></div>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="anime__details__text">
                         <div class="anime__details__title">
-                            <h3>Fate Stay Night: Unlimited Blade</h3>
-                            <span>フェイト／ステイナイト, Feito／sutei naito</span>
+                            <h3 id="title"></h3>
                         </div>
-                        <div class="anime__details__rating">
+                        <div class="anime__details__rating" class="rating">
                             <div class="rating">
                                 <a href="#"><i class="fa fa-star"></i></a>
                                 <a href="#"><i class="fa fa-star"></i></a>
                                 <a href="#"><i class="fa fa-star"></i></a>
                                 <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star-half-o"></i></a>
+                                <a href="#"><i class="fa fa-star-o"></i></a>
                             </div>
-                            <span>1.029 Votes</span>
+                            <span class="votes"></span>
                         </div>
-                        <p>Every human inhabiting the world of Alcia is branded by a “Count” or a number written on
-                            their body. For Hina’s mother, her total drops to 0 and she’s pulled into the Abyss,
-                            never to be seen again. But her mother’s last words send Hina on a quest to find a
-                            legendary hero from the Waste War - the fabled Ace!</p>
+                        <p class="description"></p>
                         <div class="anime__details__widget">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
                                     <ul>
-                                        <li><span>Type:</span> TV Series</li>
-                                        <li><span>Studios:</span> Lerche</li>
-                                        <li><span>Date aired:</span> Oct 02, 2019 to ?</li>
-                                        <li><span>Status:</span> Airing</li>
-                                        <li><span>Genre:</span> Action, Adventure, Fantasy, Magic</li>
+                                        <li>Type: TV Series</li>
+                                        <li>Author: <span CLASS="author"></span></li>
+                                        <li>Date aired: Oct 02, 2019 to ?</li>
+                                        <li>Status: <span class="status"></span></li>
+                                        <li>Genre: <span class="genres"></span></li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <ul>
-                                        <li><span>Scores:</span> 7.31 / 1,515</li>
-                                        <li><span>Rating:</span> 8.5 / 161 times</li>
-                                        <li><span>Duration:</span> 24 min/ep</li>
-                                        <li><span>Quality:</span> HD</li>
-                                        <li><span>Views:</span> 131,541</li>
+                                        <li>Rating: <span class="rating"></span></li>
+                                        <li>Chapters: <span class="chapters"></span></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="anime__details__btn">
                             <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Add To Favorite</a>
-                            <a href="#" class="watch-btn"><span>Read Now</span> <i
-                                    class="fa fa-angle-right"></i></a>
+                            <a href="#" class="watch-btn"><span>Read Now</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                            <a href="#" class="watch-btn" id="add-btn" style="display: none"><span>Add chapter</span></a>
                         </div>
                     </div>
                 </div>
@@ -157,61 +148,8 @@
                     <div class="section-title">
                         <h5>Reviews</h5>
                     </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="img/anime/review-1.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                            <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                "demons" LOL</p>
-                        </div>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="img/anime/review-2.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                            <p>Finally it came out ages ago</p>
-                        </div>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="img/anime/review-3.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                            <p>Where is the episode 15 ? Slow update! Tch</p>
-                        </div>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="img/anime/review-4.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                            <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                "demons" LOL</p>
-                        </div>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="img/anime/review-5.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                            <p>Finally it came out ages ago</p>
-                        </div>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="img/anime/review-6.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                            <p>Where is the episode 15 ? Slow update! Tch</p>
-                        </div>
+                    <div class="anime__review__item" id="comments">
+
                     </div>
                 </div>
                 <div class="anime__details__form">
@@ -220,7 +158,7 @@
                     </div>
                     <form action="#">
                         <textarea placeholder="Your Comment"></textarea>
-                        <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                        <button type="submit" id="cmt-btn"><i class="fa fa-location-arrow"></i> Review</button>
                     </form>
                 </div>
             </div>
@@ -273,7 +211,7 @@
                     <ul>
                         <li class="active"><a href="./index.html">Homepage</a></li>
                         <li><a href="./categories.html">Categories</a></li>
-                        <li><a href="./blog.html">Our Blog</a></li>
+                        <li><a href="./favourites.html">Favorite</a></li>
                         <li><a href="#">Contacts</a></li>
                     </ul>
                 </div>
@@ -295,6 +233,39 @@
 </div>
 <!-- Search model end -->
 
+<!--Add story Modal begin-->
+<div class="modal fade" id="addStoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog rounded" role="document">
+        <div class="modal-content" style="background-color: #0b0c2a">
+            <div class="modal-header" style="background-color: #0b0c2a">
+                <h5 class="modal-title" id="addStoryModalLabel" style="color: #ffffff">Add story</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body bg-secondary" style="background-color: #0b0c2a">
+                <label for="title-add" style="color: #ffffff">Input title:</label><br>
+                <input id="title-add" style="width: 35vw" class="bg-secondary border-dark"><br>
+                <label for="img-add" style="color: #ffffff">Input image link:</label><br>
+                <input id="img-add" style="width: 35vw" class="bg-secondary border-dark"><br>
+                <label for="status-add" style="color: #ffffff">Input starus:</label><br>
+                <input id="status-add" style="width: 35vw" class="bg-secondary border-dark"><br>
+                <label for="description-add" style="color: #ffffff">Input description:</label><br>
+                <input id="description-add" style="width: 35vw" class="bg-secondary border-dark"><br>
+                <label for="votes-add" style="color: #ffffff">Input votes:</label><br>
+                <input type="number" id="votes-add" style="width: 35vw" class="bg-secondary border-dark"><br>
+                <label for="rating-add" style="color: #ffffff">Input rating:</label><br>
+                <input type="number" id="rating-add" style="width: 35vw" class="bg-secondary border-dark" min="0" max="5"><br>
+            </div>
+            <div class="modal-body bg-secondary" style="background-color: #0b0c2a">
+                <button type="reset" class="btn" style="background-color: #0b0c2a; color: #ffffff" data-dismiss="modal">Close</button>
+                <button type="button" id="addStory" class="btn" style="background-color: #0b0c2a; color: #ffffff" data-dismiss="modal">Add story</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Add story Modal end-->
+
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -308,4 +279,56 @@
 </body>
 
 </html>
-<script src="js/account-search.js"></script>
+<script>
+    var params = new window.URLSearchParams(window.location.search);
+    var id = params.get('id');
+    if(localStorage.getItem('accData')){if(JSON.parse(localStorage.getItem('accData')).roles.id === 1) $('#add-btn').show()}
+    $.ajax({
+        type: "GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+        },
+        url: "http://localhost:8080/stories/"+id,
+        success: function (data) {
+            console.log(data)
+            showDetails(data);
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    });
+ function showDetails(data){
+     $('.votes').html(data.vote);
+     $('#title').html(data.title);
+     $('.description').html(data.description);
+     $('.status').html(data.status);
+     $('.author').html(data.author)
+     $('.comment').html(data.comments.length+' comment(s)');
+     $('#img').css('background-image', 'url(' + data.img + ')');
+     $('.chapters').html(data.chapters);
+     let genres='';
+     for (const genre of data.genres){
+         genres += genre;
+     }
+     $('.genres').html(genres);
+     let cmt='';
+     if(data.comments){
+         for (const c of data.comments) {
+             cmt += `<div class="anime__review__item__pic mt-3">
+                            <img src="img/anime/review-1.jpg" alt="">
+                        </div>
+                        <div class="anime__review__item__text mt-3">
+                            <h6>${c[2]} - <span>1 Hour ago</span></h6>
+                            <p>${c[1]}</p>
+                        </div>`
+         }
+         $('#comments').html(cmt);
+     } else{$('#comments').html("No comment yet!");}
+ }
+    if(!localStorage.getItem('accData')) {
+        $('#cmt-btn'). prop('disabled', true);
+        $('#cmt-btn').html('Login to comment');
+    }
+</script>
+<script src="js/account-nav.js"></script>
